@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<properties resource="database.properties"/>
+<settings>
+	<setting name="lazyLoadingEnabled" value="false"/>
+</settings>
+<environments default="all">
+<environment id="all">
+<transactionManager type="JDBC"/>
+	<dataSource type="POOLED">
+	<property name="driver" value="${database.driver}"/>
+	<property name="url" value="${database.url}"/>
+	<property name="username" value="${database.username}"/>
+	<property name="password" value="${database.password}"/>
+	<property name="poolPingQuery" value="SELECT 1"/>
+	<property name="poolPingEnabled" value="true"/>
+	
+	<!-- 
+	This configures how often the poolPingQuery will be used. 
+	This can be set to match the typical timeout for a database connection, 
+	to avoid unnecessary pings. 
+	Default: 0 (i.e. all connections are pinged every time – but only if poolPingEnabled is true of course).
+	-->
+	<!-- <property name="poolPingConnectionsNotUsedFor" value="1000"/> -->
+</dataSource>
+</environment>
+</environments>
+</configuration>
+
